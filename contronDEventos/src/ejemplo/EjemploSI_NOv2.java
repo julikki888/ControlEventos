@@ -2,6 +2,8 @@ package ejemplo;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 import javax.swing.*;
 
@@ -42,6 +44,32 @@ public class EjemploSI_NOv2 extends JFrame {
 		bSi.addActionListener(cb);
 		bNo.addActionListener(cb);
 		
+		etiqueta.setFocusable(true); //Esto es pa que no empiece el Si focuseado
+		
+		FocusBoton fb = new FocusBoton();
+		bSi.addFocusListener(fb);
+		bNo.addFocusListener(fb);
+		
+	}
+	class FocusBoton implements FocusListener{
+
+		@Override
+		public void focusGained(FocusEvent e) {
+			if(e.getSource()==bSi) {
+				bSi.setBackground(Color.orange);
+			}else {
+				bNo.setBackground(Color.orange);
+			}
+		}
+
+		@Override
+		public void focusLost(FocusEvent e) {
+			if(e.getSource()==bSi) {
+				bSi.setBackground(null);
+			}else {
+				bNo.setBackground(null);
+			}
+		}
 		
 	}
 	
