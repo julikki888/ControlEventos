@@ -29,7 +29,7 @@ public class GUI01C extends JFrame{
         etiqueta3 = new JLabel("Introduzca usuario y contraseña");
         
         texto1 = new JTextField(12);
-        texto2 = new JTextField(12);
+        texto2 = new JPasswordField(12);
         
         bSi = new JButton("Aceptar");
         bNo = new JButton("Cancelar");
