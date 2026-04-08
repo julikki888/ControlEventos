@@ -1,6 +1,8 @@
 package practica23;
 
 import java.awt.FlowLayout;
+import java.awt.TextField;
+import java.util.Iterator;
 
 import javax.swing.*;
 
@@ -30,7 +32,7 @@ public class Vista extends JPanel{
 	}
 	
 	public JPanel datosGenerales() {
-		JPanel datosG = new JPanel();
+		JPanel datosG = new JPanel(new FlowLayout(FlowLayout.CENTER,10,10));
 		
 		lCodigo = new JLabel("Codigo:");
 		lTPropiedad = new JLabel("Tipo propiedad:");
@@ -39,17 +41,22 @@ public class Vista extends JPanel{
 		lDireccion  = new JLabel("Direccion:");
 		lDescripcion = new JLabel("Descripcion:");
 		
-		tfCodigo = new JTextField();
-		tfPrecio = new JTextField("0");
-		tfSuperficie = new JTextField("0");
+		tfCodigo = new JTextField(3);
+		tfPrecio = new JTextField("0",8);
+		tfPrecio.setHorizontalAlignment(JTextField.RIGHT);
+		tfSuperficie = new JTextField("0",3);
+		tfSuperficie.setHorizontalAlignment(JTextField.RIGHT);
 		tfDireccion = new JTextField();
 		
 		taDescripcion = new JTextArea();
 		
+		cbPropiedad = new JComboBox<EnumPropiedad>(EnumPropiedad.values());
+		
+		
 		datosG.add(lCodigo);
 		datosG.add(tfCodigo);
 		datosG.add(lTPropiedad);
-		//datosG.add(cbPropiedad);
+		datosG.add(cbPropiedad);
 		datosG.add(lPrecio);
 		datosG.add(tfPrecio);
 		datosG.add(lSuperficie);
