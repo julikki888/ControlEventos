@@ -1,6 +1,8 @@
 package practica23;
 
 import java.awt.*;
+import java.util.concurrent.Flow;
+
 import javax.swing.*;
 import javax.swing.border.*;
 
@@ -28,7 +30,14 @@ public class Vista extends JPanel{
 	
 	//-----DATOS FINCA-----//
 
-	JLabel lterreno, lElectrico, lAgua, lViviendaSN;
+	JComboBox<EnumTerreno> cbTerreno;
+	JRadioButton rbSiElectrico, rbNoElectrico, rbSiAgua, rbNoAgua, rbSiVivienda, rbNoVivienda;
+	
+	//--/////////////////////--//
+	
+	//-----DATOS FINCA-----//
+	
+	JButton bGuardar, bConsultar, bBorrar, bLimpiar;
 	
 	//--/////////////////////--//
 	
@@ -40,12 +49,12 @@ public class Vista extends JPanel{
 		panelPrincipal.add(datosGenerales());
 		panelPrincipal.add(viviendas());
 		panelPrincipal.add(fincas());
+		panelPrincipal.add(propiedad());
 		
-		panelPrincipal.setPreferredSize(new Dimension(640,620));
+		panelPrincipal.setPreferredSize(new Dimension(640,520));
 		this.setLayout(new FlowLayout());
 		this.add(panelPrincipal);
 	}
-	
 
 	public JPanel datosGenerales() {
 		JPanel datosG = new JPanel(new FlowLayout(FlowLayout.LEFT,10,10));
@@ -90,7 +99,7 @@ public class Vista extends JPanel{
 	}
 	
 	private Component viviendas() {
-		JPanel datosV = new JPanel(new FlowLayout(FlowLayout.CENTER,10,10));
+		JPanel datosV = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		datosV.setBorder(new TitledBorder("Datos especificos para vivienda"));
 
 		JLabel lNumVivienda = new JLabel("Tipo de vivienda: ");
@@ -119,11 +128,75 @@ public class Vista extends JPanel{
 
 	private Component fincas() {
 		JPanel datosF = new JPanel(new GridLayout(4,1));
-
+		datosF.setBorder(new TitledBorder("Datos especificos para fincas rusticas"));
+		
+		JPanel finca1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		JPanel finca2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		JPanel finca3 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		JPanel finca4 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		
+		JLabel lterreno = new JLabel("Tipo terreno: ");
+		cbTerreno = new JComboBox<EnumTerreno>(EnumTerreno.values());
+		finca1.add(lterreno);
+		finca1.add(cbTerreno);
+		
+		JLabel lElectrico = new JLabel("Suministro electrico: ");
+		ButtonGroup bgElectrico = new ButtonGroup();
+		rbSiElectrico = new JRadioButton("Si");
+		rbNoElectrico = new JRadioButton("No");
+		bgElectrico.add(rbSiElectrico);
+		bgElectrico.add(rbNoElectrico);
+		finca2.add(lElectrico);
+		finca2.add(rbSiElectrico);
+		finca2.add(rbNoElectrico);
+		
+		JLabel lAgua = new JLabel("Suministro de agua: ");
+		ButtonGroup bgAgua = new ButtonGroup();
+		rbSiAgua = new JRadioButton("Si");
+		rbNoAgua = new JRadioButton("No");
+		bgAgua.add(rbSiAgua);
+		bgAgua.add(rbNoAgua);
+		finca3.add(lAgua);
+		finca3.add(rbSiAgua);
+		finca3.add(rbNoAgua);
+		
+		JLabel lViviendaSN = new JLabel("Dispone de vivienda: ");
+		ButtonGroup bgVivienda = new ButtonGroup();
+		rbSiVivienda = new JRadioButton("Si");
+		rbNoVivienda = new JRadioButton("No");
+		bgVivienda.add(rbSiVivienda);
+		bgVivienda.add(rbNoVivienda);
+		finca4.add(lViviendaSN);
+		finca4.add(rbSiVivienda);
+		finca4.add(rbNoVivienda);
+		
+		datosF.add(finca1);
+		datosF.add(finca2);
+		datosF.add(finca3);
+		datosF.add(finca4);
+		
 		return datosF;
 	}
 	
-	
+
+	private Component propiedad() {
+		JPanel datosP = new JPanel(new GridLayout(1,4,3,0));
+		datosP.setPreferredSize(new Dimension(640,12));
+		datosP.setBorder(new TitledBorder("Operaciones disponibles sobre propiedades"));
+		
+		bGuardar = new JButton("Guardar");
+		bConsultar = new JButton("Consultar");
+		bBorrar = new JButton("Borrar");
+		bLimpiar = new JButton("Limpiar");
+				
+		datosP.add(bGuardar);
+		datosP.add(bConsultar);
+		datosP.add(bBorrar);
+		datosP.add(bLimpiar);
+		
+		return datosP;
+	}
+
 	
 
 	public void control(Controlador ctr) {
