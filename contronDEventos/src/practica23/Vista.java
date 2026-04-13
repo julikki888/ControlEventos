@@ -15,29 +15,33 @@ public class Vista extends JPanel{
 	 */
 	//-----DATOS GENERALES-----//
 	
-	JTextField tfCodigo, tfPrecio, tfSuperficie, tfDireccion;
-	JTextArea taDescripcion;
-	JComboBox<EnumPropiedad> cbPropiedad;
+	private JPanel datosG;
+	private JTextField tfCodigo, tfPrecio, tfSuperficie, tfDireccion;
+	private JTextArea taDescripcion;
+	private JComboBox<EnumPropiedad> cbPropiedad;
 	
 	//--/////////////////////--//
 	
 	//-----DATOS VIVIENDA-----//
 
-	JComboBox<EnumViviendas> cbVivienda;
-	JComboBox<Integer> cbDormitorios, cbBaños;
-	
+	private JPanel datosV;
+	private JComboBox<EnumViviendas> cbVivienda;
+	private JComboBox<Integer> cbDormitorios, cbBaños;
+	 
 	//--/////////////////////--//
 	
 	//-----DATOS FINCA-----//
 
-	JComboBox<EnumTerreno> cbTerreno;
-	JRadioButton rbSiElectrico, rbNoElectrico, rbSiAgua, rbNoAgua, rbSiVivienda, rbNoVivienda;
+	private JPanel datosF;
+	private JComboBox<EnumTerreno> cbTerreno;
+	private JRadioButton rbSiElectrico, rbNoElectrico, rbSiAgua, rbNoAgua, rbSiVivienda, rbNoVivienda;
 	
 	//--/////////////////////--//
 	
-	//-----DATOS FINCA-----//
+	//-----DATOS PROPIEDAD-----//
 	
-	JButton bGuardar, bConsultar, bBorrar, bLimpiar;
+	private JPanel datosP;
+	private JButton bGuardar, bConsultar, bBorrar, bLimpiar;
 	
 	//--/////////////////////--//
 	
@@ -57,7 +61,7 @@ public class Vista extends JPanel{
 	}
 
 	public JPanel datosGenerales() {
-		JPanel datosG = new JPanel(new FlowLayout(FlowLayout.LEFT,10,10));
+		datosG = new JPanel(new FlowLayout(FlowLayout.LEFT,10,10));
 		datosG.setBorder(new TitledBorder("Datos generales"));
 		
 		JLabel lCodigo = new JLabel("Codigo:");
@@ -99,7 +103,7 @@ public class Vista extends JPanel{
 	}
 	
 	private Component viviendas() {
-		JPanel datosV = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		datosV = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		datosV.setBorder(new TitledBorder("Datos especificos para vivienda"));
 
 		JLabel lNumVivienda = new JLabel("Tipo de vivienda: ");
@@ -127,7 +131,7 @@ public class Vista extends JPanel{
 	}
 
 	private Component fincas() {
-		JPanel datosF = new JPanel(new GridLayout(4,1));
+		datosF = new JPanel(new GridLayout(4,1));
 		datosF.setBorder(new TitledBorder("Datos especificos para fincas rusticas"));
 		
 		JPanel finca1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
@@ -180,7 +184,7 @@ public class Vista extends JPanel{
 	
 
 	private Component propiedad() {
-		JPanel datosP = new JPanel(new GridLayout(1,4,3,0));
+		datosP = new JPanel(new GridLayout(1,4,3,0));
 		datosP.setPreferredSize(new Dimension(640,12));
 		datosP.setBorder(new TitledBorder("Operaciones disponibles sobre propiedades"));
 		
@@ -201,6 +205,58 @@ public class Vista extends JPanel{
 
 	public void control(Controlador ctr) {
 		
+		cbPropiedad.addItemListener(ctr);
+		
+		
 	}
 
+	public JPanel getDatosG() {return datosG;}
+	public JTextField getTfCodigo() {return tfCodigo;}
+	public JTextField getTfPrecio() {return tfPrecio;}
+	public JTextField getTfSuperficie() {return tfSuperficie;}
+	public JTextField getTfDireccion() {return tfDireccion;}
+	public JTextArea getTaDescripcion() {return taDescripcion;}
+	public JComboBox<EnumPropiedad> getCbPropiedad() {return cbPropiedad;}
+	public JPanel getDatosV() {return datosV;}
+	public JComboBox<EnumViviendas> getCbVivienda() {return cbVivienda;}
+	public JComboBox<Integer> getCbDormitorios() {return cbDormitorios;}
+	public JComboBox<Integer> getCbBaños() {return cbBaños;}
+	public JPanel getDatosF() {return datosF;}
+	public JComboBox<EnumTerreno> getCbTerreno() {return cbTerreno;}
+	public JRadioButton getRbSiElectrico() {return rbSiElectrico;}
+	public JRadioButton getRbNoElectrico() {return rbNoElectrico;}
+	public JRadioButton getRbSiAgua() {return rbSiAgua;}
+	public JRadioButton getRbNoAgua() {return rbNoAgua;}
+	public JRadioButton getRbSiVivienda() {return rbSiVivienda;}
+	public JRadioButton getRbNoVivienda() {return rbNoVivienda;}
+	public JPanel getDatosP() {return datosP;}
+	public JButton getbGuardar() {return bGuardar;}
+	public JButton getbConsultar() {return bConsultar;}
+	public JButton getbBorrar() {return bBorrar;}
+	public JButton getbLimpiar() {return bLimpiar;}
+
+	public void setDatosG(JPanel datosG) {this.datosG = datosG;}
+	public void setTfCodigo(JTextField tfCodigo) {this.tfCodigo = tfCodigo;}
+	public void setTfPrecio(JTextField tfPrecio) {this.tfPrecio = tfPrecio;}
+	public void setTfSuperficie(JTextField tfSuperficie) {this.tfSuperficie = tfSuperficie;}
+	public void setTfDireccion(JTextField tfDireccion) {this.tfDireccion = tfDireccion;}
+	public void setTaDescripcion(JTextArea taDescripcion) {this.taDescripcion = taDescripcion;}
+	public void setCbPropiedad(JComboBox<EnumPropiedad> cbPropiedad) {this.cbPropiedad = cbPropiedad;}
+	public void setDatosV(JPanel datosV) {this.datosV = datosV;}
+	public void setCbVivienda(JComboBox<EnumViviendas> cbVivienda) {this.cbVivienda = cbVivienda;}
+	public void setCbDormitorios(JComboBox<Integer> cbDormitorios) {this.cbDormitorios = cbDormitorios;}
+	public void setCbBaños(JComboBox<Integer> cbBaños) {this.cbBaños = cbBaños;}
+	public void setDatosF(JPanel datosF) {this.datosF = datosF;}
+	public void setCbTerreno(JComboBox<EnumTerreno> cbTerreno) {this.cbTerreno = cbTerreno;}
+	public void setRbSiElectrico(JRadioButton rbSiElectrico) {this.rbSiElectrico = rbSiElectrico;}
+	public void setRbNoElectrico(JRadioButton rbNoElectrico) {this.rbNoElectrico = rbNoElectrico;}
+	public void setRbSiAgua(JRadioButton rbSiAgua) {this.rbSiAgua = rbSiAgua;}
+	public void setRbNoAgua(JRadioButton rbNoAgua) {this.rbNoAgua = rbNoAgua;}
+	public void setRbSiVivienda(JRadioButton rbSiVivienda) {this.rbSiVivienda = rbSiVivienda;}
+	public void setRbNoVivienda(JRadioButton rbNoVivienda) {this.rbNoVivienda = rbNoVivienda;}
+	public void setDatosP(JPanel datosP) {this.datosP = datosP;}
+	public void setbGuardar(JButton bGuardar) {this.bGuardar = bGuardar;}
+	public void setbConsultar(JButton bConsultar) {this.bConsultar = bConsultar;}
+	public void setbBorrar(JButton bBorrar) {this.bBorrar = bBorrar;}
+	public void setbLimpiar(JButton bLimpiar) {this.bLimpiar = bLimpiar;}
 }
