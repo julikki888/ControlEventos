@@ -1,4 +1,6 @@
 package practica23;
+import java.awt.Dimension;
+
 import javax.swing.*;
 
 public class MainTest {

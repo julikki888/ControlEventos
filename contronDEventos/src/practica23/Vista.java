@@ -86,7 +86,6 @@ public class Vista extends JPanel{
 		
 		cbPropiedad = new JComboBox<EnumPropiedad>(EnumPropiedad.values());
 		
-		
 		datosG.add(lCodigo);
 		datosG.add(tfCodigo);
 		datosG.add(lTPropiedad);
